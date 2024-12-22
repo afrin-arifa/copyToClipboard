@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Copy to Clipboard</title>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			text-align: center;
+		}
+
+		.grid-container {
+			display: grid;
+			grid-template-columns: auto auto;
+			gap: 10px;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			width: 100%;
+			font-size: 16px;
+		}
+
+		button {
+			padding: 10px;
+			font-size: 16px;
+			cursor: pointer;
+			background-color: #007BFF;
+			color: #FFF;
+			border: none;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+		button.copied {
+			background-color: #28a745;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Copy to Clipboard</h1>
+		<div class="grid-container">
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+
+			<input type="text" placeholder="Enter text here" />
+			<button onclick="copyToClipboard(this)">Copy Text</button>
+		</div>
+	</div>
+
+	<script>
+		function copyToClipboard(button) {
+			const inputText = button.previousElementSibling;
+			inputText.select();
+			inputText.setSelectionRange(0, 99999);
+
+
+			navigator.clipboard.writeText(inputText.value).then(() => {
+
+				button.textContent = "Copied!";
+				button.classList.add("copied");
+
+				setTimeout(() => {
+					button.textContent = "Copy Text";
+					button.classList.remove("copied");
+				}, 1500);
+			}).catch(err => {
+				console.error('Failed to copy text: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
